@@ -20,7 +20,7 @@ class ChatController extends Controller
         // For authenticated users, automatically create a new chat and redirect
         if (Auth::check()) {
             $chat = Auth::user()->chats()->create([
-                'title' => 'TumGPT',
+                'title' => Auth::user()->name,
             ]);
 
             return redirect()->route('chat.show', $chat);
